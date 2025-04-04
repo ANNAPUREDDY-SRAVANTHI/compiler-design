@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <string.h>
+
+char input[100];
+int pos = 0;
+
+int main() {
+    printf("Enter input string: ");
+    scanf("%s", input);
+
+    printf("E -> T E'\n");
+
+    if (input[pos] >= 'a' && input[pos] <= 'z') {
+        printf("T -> %c\n", input[pos]);
+        pos++;
+        
+        if (input[pos] == '+') {
+            printf("E' -> + T E'\n");
+            pos++;
+            if (input[pos] >= 'a' && input[pos] <= 'z') {
+                printf("T -> %c\n", input[pos]);
+                pos++;
+                printf("E' -> ε\n");
+            } else {
+                printf("Error in T\n");
+                return 0;
+            }
+        } else {
+            printf("E' -> ε\n");
+        }
+    } else {
+        printf("Error in T\n");
+        return 0;
+    }
+
+    if (input[pos] == '\0')
+        printf("String is successfully parsed.\n");
+    else
+        printf("Parsing failed.\n");
+
+    return 0;
+}
