@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main() {
+    char arg1, arg2, op, result = 'C';
+
+    printf("Enter an expression (e.g., A + B): ");
+    scanf(" %c %c %c", &arg1, &op, &arg2);
+
+    printf("\nGenerated Assembly Code:\n");
+    printf("MOV R1, %c\n", arg1);
+    
+    if (op == '+')
+        printf("ADD R1, %c\n", arg2);
+    else if (op == '-')
+        printf("SUB R1, %c\n", arg2);
+    else if (op == '*')
+        printf("MUL R1, %c\n", arg2);
+    else if (op == '/')
+        printf("DIV R1, %c\n", arg2);
+    
+    printf("MOV %c, R1\n", result);
+
+    return 0;
+}
