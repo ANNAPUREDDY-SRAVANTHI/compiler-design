@@ -1,0 +1,25 @@
+%{
+#include <stdio.h>
+#include <string.h>
+
+#define OLD_WORD "oldword"
+#define NEW_WORD "newword"
+
+%}
+
+%%
+OLD_WORD    printf("%s", NEW_WORD);
+[a-zA-Z]+   printf("%s", yytext);
+[^a-zA-Z]+  printf("%s", yytext);
+
+%%
+
+int main() {
+    printf("Enter text: \n");
+    yylex();
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}
