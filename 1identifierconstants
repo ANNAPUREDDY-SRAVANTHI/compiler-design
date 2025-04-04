@@ -1,0 +1,13 @@
+#include <stdio.h> 
+#include <ctype.h>
+int main() 
+{ char code[] = "a = b + 5;"; 
+for (int i = 0; code[i] != '\0'; i++) 
+{ 
+    if (isalpha(code[i])) printf("Identifier: %c\n", code[i]); 
+    else if (isdigit(code[i])) printf("Constant: %c\n", code[i]); 
+    else if (code[i] != ' ') printf("Operator: %c\n", code[i]);
+}
+    return 0;
+    
+}
