@@ -1,0 +1,25 @@
+%{
+#include <stdio.h>
+#include <ctype.h>
+
+int word_count = 0, number_count = 0;
+%}
+
+%%
+[0-9]+    { printf("Number: %s\n", yytext); number_count++; }
+[a-zA-Z]+ { printf("Word: %s\n", yytext); word_count++; }
+[ \t\n]+  ;  // Ignore spaces, tabs, and newlines
+.         ;  // Ignore other characters
+%%
+
+int main() {
+    printf("Enter a statement:\n");
+    yylex();
+    printf("\nTotal Words: %d\n", word_count);
+    printf("Total Numbers: %d\n", number_count);
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}
