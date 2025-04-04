@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int isValid(char *str) {
+    while (*str) {
+        if (*str < 'a' || *str > 'z') return 0;
+        str++;
+    }
+    return 1;
+}
+
+int main() {
+    char input[20];
+    printf("Enter a string: ");
+    scanf("%s", input);
+
+    printf(isValid(input) ? "Valid string.\n" : "Invalid string.\n");
+    return 0;
+}
