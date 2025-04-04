@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char nonTerminal, alpha[10], beta[10];
+
+    printf("Enter non-terminal: ");
+    scanf(" %c", &nonTerminal);
+    
+    printf("Enter left-recursive production: ");
+    scanf("%s", alpha);
+    
+    printf("Enter non-recursive production: ");
+    scanf("%s", beta);
+
+    printf("\nGiven Production: %c -> %s | %s", nonTerminal, alpha, beta);
+    printf("\nEliminated Left Recursion:");
+    printf("\n%c -> %s%c'", nonTerminal, beta, nonTerminal);
+    printf("\n%c' -> %s%c' | ε\n", nonTerminal, alpha + 1, nonTerminal);
+
+    return 0;
+}
