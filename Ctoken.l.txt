@@ -1,0 +1,30 @@
+%{
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+void print_token(const char* type, const char* token) {
+    printf("%s: %s\n", type, token);
+}
+%}
+
+%%
+"int"|"float"|"char"|"double"|"return"|"if"|"else"|"while"|"for" { print_token("Keyword", yytext); }
+[a-zA-Z_][a-zA-Z0-9_]* { print_token("Identifier", yytext); }
+[0-9]+ { print_token("Number", yytext); }
+"+"|"-"|"*"|"/"|"=" { print_token("Operator", yytext); }
+"("|")"|"{"|"}"|"["|"]"|";"|"," { print_token("Separator", yytext); }
+. { print_token("Unknown", yytext); }
+
+%%
+
+int main() {
+    printf("Enter a C program: \n");
+    yylex();
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}
