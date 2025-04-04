@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main() {
+    char arg1, arg2, op;
+    char result = 't'; 
+
+    printf("Enter an expression (e.g., a + b): ");
+    scanf(" %c %c %c", &arg1, &op, &arg2);
+
+    printf("Three-Address Code Representation:\n");
+    printf("%c1 = %c %c %c\n", result, arg1, op, arg2);
+
+    return 0;
+}
