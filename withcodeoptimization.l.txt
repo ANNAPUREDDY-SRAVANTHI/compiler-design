@@ -1,0 +1,18 @@
+#include <stdio.h> 
+void withoutOptimization() {
+    int a = 5, b = 10, c = 15, result;
+    result = (a * b) + (a * b) + (c * b);  
+    printf("Without Optimization: %d\n", result);
+}
+void withOptimization() {
+    int a = 5, b = 10, c = 15, result, temp;
+    temp = a * b;
+    result = temp + temp + (c * b);
+    printf("With Optimization: %d\n", result);
+} 
+int main() {
+    printf("Common Subexpression Elimination Example\n\n");
+    withoutOptimization();
+    withOptimization();
+    return 0;
+}
