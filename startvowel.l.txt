@@ -1,0 +1,20 @@
+%{
+#include<stdio.h>
+#include<string.h>
+%}
+
+%%
+[aeiouAEIOU][a-zA-Z]*   { printf("Accepted: %s\n", yytext); }
+[a-zA-Z]+              { printf("Rejected: %s\n", yytext); }
+.                      { /* Ignore other characters */ }
+%%
+
+int main() {
+    printf("Enter strings (Ctrl+D to stop):\n");
+    yylex();
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}
