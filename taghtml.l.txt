@@ -1,0 +1,26 @@
+%{
+#include <stdio.h>
+int tag_count = 0;
+%}
+
+%%
+[^>]+   { tag_count++; }  /* Matches any HTML tag */
+%%
+int yywrap(void) {
+    return 1;
+}
+int main(int argc, char **argv) {
+    if (argc < 2) {
+        printf("Usage: %s <filename>\n", argv[0]);
+        return 1;
+    }
+ yyin = fopen(argv[1], "r");
+    if (!yyin) {
+        printf("Error opening file %s\n", argv[1]);
+        return 1;
+    }
+yylex();
+    fclose(yyin);
+ printf("Number of HTML tags: %d\n", tag_count);
+    return 0;
+}
